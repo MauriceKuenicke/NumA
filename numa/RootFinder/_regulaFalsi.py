@@ -1,0 +1,3 @@
+
+def regulaFalsi():
+    pass
