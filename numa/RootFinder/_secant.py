@@ -1,6 +1,3 @@
-def f(x): return x**2 - x - 1
-
-
 def secant(function, interval_start, interval_end, max_iterations=10000, giveIterations=False):
     """Approximate one root of a given one-parameter function using the secant method;
 
@@ -57,6 +54,3 @@ tuple
 
 def _calcX_k(function, a_n, b_n):
     return (a_n*function(b_n) - b_n*function(a_n)) / (function(b_n) - function(a_n))
-
-
-print(secant(f, 1, 2))

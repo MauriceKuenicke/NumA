@@ -20,8 +20,8 @@ interval_end: int
 
 Returns
 -------
-None
-    None
+list
+    A list of all x values that are in the near area of a root.
 
 """
     domain = np.linspace(interval_start, interval_end, 100000)
@@ -31,9 +31,5 @@ None
         if f_vals[index] * f_vals[index-1] < 0:
             sign_switches.append(domain[index])
     if len(sign_switches) == 0:
-        print("No possible roots found in given domain")
         return None
-
-    possible_roots = ','.join([str(x) for x in sign_switches])
-    print(f"Possible roots found at around x = {possible_roots}")
-    return None
+    return sign_switches
