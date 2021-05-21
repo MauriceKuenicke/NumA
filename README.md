@@ -1,5 +1,6 @@
 # NumA
 ![](https://numa.readthedocs.io/en/latest/_images/NumA-logo.png)
+
 NumA is a personal Python package storing various useful methods for numerical calculations. This is mostly for the sake of learning and is not intended for high-performance simulations.
 
 [![Documentation Status](https://readthedocs.org/projects/numa/badge/?version=latest)](https://numa.readthedocs.io/en/latest/?badge=latest)
