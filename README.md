@@ -3,7 +3,7 @@
 
 NumA is a personal Python package storing various useful methods for numerical calculations. This is mostly for the sake of learning and is not intended for high-performance simulations.
 
-[![Documentation Status](https://readthedocs.org/projects/numa/badge/?version=latest)](https://numa.readthedocs.io/en/latest/?badge=latest)
+[![Test NumA](https://github.com/MauriceKuenicke/NumA/actions/workflows/test_package.yml/badge.svg)](https://github.com/MauriceKuenicke/NumA/actions/workflows/test_package.yml)  [![codecov](https://codecov.io/gh/MauriceKuenicke/NumA/branch/main/graph/badge.svg?token=X39JFT8UEG)](https://codecov.io/gh/MauriceKuenicke/NumA)  [![Documentation Status](https://readthedocs.org/projects/numa/badge/?version=latest)](https://numa.readthedocs.io/en/latest/?badge=latest)
 
 -----------------------------------------------
 
