@@ -1,4 +1,4 @@
-from numa import Errors
+from numa import utils
 
 
 def NewtonRhapson(function, x0, Dfunction=None, max_iterations=10000, giveIterations=False):
@@ -52,7 +52,7 @@ References
 
         Dy_n = Dfunction(x_n)
         if Dy_n == 0:
-            raise Errors.MethodStuckError("Derivative is zero.")
+            raise utils.MethodStuckError("Derivative is zero.")
 
         if n != 1:
             err = abs(y_old - y_n)
@@ -64,4 +64,4 @@ References
         y_old = y_n
         x_n = x_n - y_n/Dy_n
 
-    raise Errors.MaximumIterationError(n)
+    raise utils.MaximumIterationError(n)

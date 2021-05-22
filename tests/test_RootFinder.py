@@ -48,11 +48,11 @@ def test_bisection():
 
 def test_bisection_maxIteration():
     import numpy
-    from numa import RootFinder, Errors
+    from numa import RootFinder, utils
     import pytest
 
     def f1(x): return numpy.sin(2*x) + numpy.e**x
-    with pytest.raises(Errors.MaximumIterationError):
+    with pytest.raises(utils.MaximumIterationError):
         root, error = RootFinder.bisection(f1, -2, -1, max_iterations=3)
     return None
 
@@ -85,16 +85,16 @@ def test_NewtonRhapson():
 
 
 def test_NewtonRhapson_maxIterations():
-    from numa import RootFinder, Errors
+    from numa import RootFinder, utils
     import pytest
 
     def f1(x): return x**3 - 2*x + 2
     def df1(x): return 3*x**2 - 2
 
-    with pytest.raises(Errors.MaximumIterationError):
+    with pytest.raises(utils.MaximumIterationError):
         root, error = RootFinder.NewtonRhapson(f1, 0, df1)
 
-    with pytest.raises(Errors.MaximumIterationError):
+    with pytest.raises(utils.MaximumIterationError):
         root, error = RootFinder.NewtonRhapson(f1, -1.5, df1, max_iterations=3)
     return None
 
@@ -118,12 +118,12 @@ def test_NewtonRhapson_returnIterations():
 
 def test_NewtonRhapson_MethodStuckError():
     import numpy
-    from numa import RootFinder, Errors
-    import pytest
+    from numa import RootFinder, utils
+    import pytest  # pyright: reportMissingImports=false
 
     def f1(x): return x*numpy.e**(-x)
     def df1(x): return numpy.e**(-x) - x*(numpy.e**(-x))
 
-    with pytest.raises(Errors.MethodStuckError):
+    with pytest.raises(utils.MethodStuckError):
         root, error = RootFinder.NewtonRhapson(f1, 1, df1)
     return None

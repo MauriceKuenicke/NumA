@@ -9,7 +9,7 @@ setuptools.setup(
     author="Maurice Künicke",
     author_email="m.kuenicke@campus.tu-berlin.de",
     description="Numerical Analysis Package containing various helpful methods.",
-    packages=["numa", "numa/RootFinder"],
+    packages=["numa", "numa/RootFinder", "numa/utils"],
     long_description=long_description,
     url="https://github.com/MauriceKuenicke/NumA",
     license="MIT",

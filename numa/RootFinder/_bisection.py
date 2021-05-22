@@ -1,4 +1,4 @@
-from numa import Errors
+from numa import utils
 
 
 def bisection(function, interval_start, interval_end, max_iterations=10000, giveIterations=False):
@@ -76,4 +76,4 @@ References
             print("Bisection-Method can't find any roots")
             return None
 
-    raise Errors.MaximumIterationError(n)
+    raise utils.MaximumIterationError(n)

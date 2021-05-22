@@ -1,4 +1,4 @@
-from numa import Errors
+from numa import utils
 
 
 def regulaFalsi(function, interval_start, interval_end, max_iterations=10000, giveIterations=False):
@@ -75,7 +75,7 @@ but chooses the next interval based on the position of x_k.
         else:
             print("Regula Falsi can't find any roots")
             return None
-    raise Errors.MaximumIterationError(n)
+    raise utils.MaximumIterationError(n)
 
 
 def _calcX_k(function, a_n, b_n):
