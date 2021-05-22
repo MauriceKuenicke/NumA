@@ -22,6 +22,14 @@ Returns
 tuple
     (root value, error, number of iterations)
 
+Notes
+-----
+Calculates the midpoint after every iteration as
+
+.. math::
+
+    m_N = \\frac{a_N + b_N}{2}
+
 References
 -------
  [1] https://www.math.ubc.ca/~pwalls/math-python/roots-optimization/bisection/

@@ -24,6 +24,14 @@ Returns
 tuple
     (root value, error, number of iterations)
 
+Notes
+-----
+Calculates the next x-intercept of the tangent line recursively
+
+.. math::
+
+    x_{n+1} = x_n - \\frac{f(x_n)}{f'(x_n)}
+
 References
 -------
  [1] https://www.math.ubc.ca/~pwalls/math-python/roots-optimization/newton/

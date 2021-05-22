@@ -25,6 +25,16 @@ Returns
 tuple
     (root value, error, number of iterations)
 
+Notes
+-----
+Calculates the next upper limit for the interval as
+
+.. math::
+
+    x_k = \\frac{af(b) - bf(a)}{f(b)-f(a)} \\Longrightarrow [a_n, x_k] \\quad \\text{or} \\quad [x_k, b_n]
+
+but chooses the next interval based on the position of x_k.
+
 """
     err_accepted = 10e-15
     a_n = interval_start
