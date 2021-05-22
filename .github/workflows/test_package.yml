@@ -35,4 +35,4 @@ jobs:
         pytest -v tests/ --cov=numa/
     - name: Upload code coverage
       run: |
-        bash <(curl -s https://codecov.io/bash)
+        if [[ ${{ matrix.python-version }} == 3.8 ]] && [[ ${{ matrix.numpy-version }} == 1.18.1 ]]; then bash <(curl -s https://codecov.io/bash)
