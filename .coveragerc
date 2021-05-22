@@ -1,5 +1,5 @@
 [run]
-source= exampy/
+source= numa/
 
 [report]
 # Regexes for lines to exclude from consideration
