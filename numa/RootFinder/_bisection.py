@@ -1,3 +1,6 @@
+from numa import Errors
+
+
 def bisection(function, interval_start, interval_end, max_iterations=10000, giveIterations=False):
     """Approximate one root of a given one-parameter function using the Bisection method;
 note that the root has to be inside the interval or the bisection method won't yield any results.
@@ -72,8 +75,5 @@ References
         else:
             print("Bisection-Method can't find any roots")
             return None
-    print("Maximum iteration count reached. Break loop and return current values.")
-    if not giveIterations:
-        return (a_n + b_n)/2, err
-    if giveIterations:
-        return (a_n + b_n)/2, err, n
+
+    raise Errors.MaximumIterationError(n)
