@@ -34,7 +34,7 @@ Similarly, we can do a basic 1D pre analysis in [-100,100] of possible root valu
 
        >>> f = lambda x: x**2 - 5*x +3
        >>> numa.RootFinder.preAnalysis1D(f, -100, 100)
-       # [x = 0.6990069900698899,4.3030430304303025]
+       # [0.6990069900698899,4.3030430304303025]
 
 
 ``NumA`` also includes simple methods for integrating a function,
