@@ -1,3 +1,6 @@
+from numa import utils
+
+
 def secant(function, interval_start, interval_end, max_iterations=10000, giveIterations=False):
     """Approximate one root of a given one-parameter function using the secant method;
 
@@ -50,14 +53,10 @@ Calculates the next upper limit for the interval as
                 if not giveIterations:
                     return _calcX_k(function, a_n, b_n), err
                 if giveIterations:
-                    return _calcX_k(function, a_n, b_n), err
+                    return _calcX_k(function, a_n, b_n), err, n
         y_old = y_n
 
-    print("Maximum iteration count reached. Break loop and return current values.")
-    if not giveIterations:
-        return _calcX_k(function, a_n, b_n), err
-    if giveIterations:
-        return _calcX_k(function, a_n, b_n), err, n
+    raise utils.MaximumIterationError(n)
 
 
 def _calcX_k(function, a_n, b_n):

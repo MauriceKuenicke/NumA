@@ -130,3 +130,5 @@ dmypy.json
 
 coverage_html_report/**
 coverage_html_report
+
+.vscode
