@@ -1,1 +1,1 @@
-from .RootFinder import *
+from . import RootFinder
