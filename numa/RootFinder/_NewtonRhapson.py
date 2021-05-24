@@ -53,7 +53,10 @@ References
                 convergence.append((n, 0))
                 return x_n, 0, convergence
 
-        Dy_n = Dfunction(x_n)
+        if isinstance(Dfunction, float) or isinstance(Dfunction, int):
+            Dy_n = Dfunction
+        else:
+            Dy_n = Dfunction(x_n)
         if Dy_n == 0:
             raise utils.MethodStuckError("Derivative is zero.")
 

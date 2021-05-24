@@ -159,6 +159,22 @@ def test_NewtonRhapson_MethodStuckError():
     return None
 
 
+def test_NewtonRhapson_ConstantDerivative():
+    import numpy
+    from numa import RootFinder
+    import math
+    tol = 1e-14
+
+    def f1(x): return x - 3**(1/3)
+    df1 = 1
+
+    root, error = RootFinder.NewtonRhapson(f1, 1.4, df1)
+    solution = 1.442249570307408382
+    assert (
+        math.fabs(root - solution) < tol and error < tol
+    ), "Rootfinder.NewtonRhapson does not agree with known solution"
+
+
 def test_regulaFalsi():
     import numpy
     from numa import RootFinder
