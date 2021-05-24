@@ -1,10 +1,11 @@
 import numpy as np
+from numa import utils
 
 
 def preAnalysis1D(function, interval_start, interval_end):
     """Approximate possible roots of a given one-parameter function and the given domain.
 This function creates a numpy.linspace and calculates all possible values on that domain. The function is assumed
-to be continuous in that case. Positions where the sign of the function value changes will be marked as a possible
+to be continuous and not positive definit axial symmetric with respect to the y axis in that case. Positions where the sign of the function value changes will be marked as a possible
 root area and returned. This method should not be used to approximate roots. It should rather be a tool to further
 define the domain space for methods like numa.RootFinder.bisection.
 
