@@ -22,3 +22,29 @@ class MethodStuckError(Exception):
         self.reason = reason
         self.message = f"Method is stuck. Reason given: {self.reason}"
         super().__init__(self.message)
+
+
+class MethodNotSupportedError(Exception):
+    """Exception raised when a method is not supported.
+
+    Attributes:
+        reason -- reason given why the method can't proceed
+    """
+
+    def __init__(self, method_list):
+        self.method_list = ",".join(method_list)
+        self.message = f"Input method not allowed. Please choose one of these methods: {self.method_list}."
+        super().__init__(self.message)
+
+
+class MissingParameterError(Exception):
+    """Exception raised when parameter are missing.
+
+    Attributes:
+        reason -- reason given why the method can't proceed
+    """
+
+    def __init__(self, parameter):
+        self.parameter_list = ",".join(parameter)
+        self.message = f"Missing parameter detected. Please add the following parameter combination: {self.parameter_list}"
+        super().__init__(self.message)

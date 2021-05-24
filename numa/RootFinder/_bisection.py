@@ -18,12 +18,13 @@ interval_end: int
 max_iterations: int
     Maximum number of iterations until the loop breaks. Default set to 10000
 giveIterations: boolean, optional
-    Information whether the value for iterations needed should be returned or not.
+    Information whether the value for iterations needed and the error should be returned or not. Lists starts at iteration two
+    since the error is always calculated with respect to the previous guess.
 
 Returns
 -------
 tuple
-    (root value, error, number of iterations)
+    (root value, error, convergence)
 
 Notes
 -----
@@ -40,6 +41,7 @@ References
     err_accepted = 10e-15
     a_n = interval_start
     b_n = interval_end
+    convergence = list()
     for n in range(1, max_iterations+1):
         m_n = (a_n + b_n)/2   # Middlepoint
         y_n = function(m_n)   # Function at middle point
@@ -48,11 +50,12 @@ References
             b_n = m_n         # set new interval end
             if n != 1:
                 err = abs(y_old - y_n)
+                convergence.append((n, err))
                 if err < err_accepted:
                     if not giveIterations:
                         return (a_n + b_n)/2, err
                     if giveIterations:
-                        return (a_n + b_n)/2, err, n
+                        return (a_n + b_n)/2, err, convergence
             y_old = y_n
 
         elif function(b_n)*y_n < 0:  # root is on right side of m_n
@@ -60,20 +63,23 @@ References
             b_n = b_n
             if n != 1:
                 err = abs(y_old - y_n)
+                convergence.append((n, err))
                 if err < err_accepted:
                     if not giveIterations:
                         return (a_n + b_n)/2, err
                     if giveIterations:
-                        return (a_n + b_n)/2, err, n
+                        return (a_n + b_n)/2, err, convergence
             y_old = y_n
 
         elif y_n == 0:        # Exact solution
             if not giveIterations:
                 return m_n, 0
             if giveIterations:
-                return m_n, 0, n
+                convergence.append((n, 0))
+                return m_n, 0, convergence
         else:
-            print("Bisection-Method can't find any roots")
-            return None
+            utils.MethodStuckError(
+                "Bisection won't converge to root. Please adjust limits."
+            )
 
     raise utils.MaximumIterationError(n)

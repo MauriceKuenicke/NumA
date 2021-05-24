@@ -14,6 +14,6 @@ setuptools.setup(
     url="https://github.com/MauriceKuenicke/NumA",
     license="MIT",
     python_requires='>=3',
-    install_requires=["numpy"]
+    install_requires=["numpy", "matplotlib"]
 
 )

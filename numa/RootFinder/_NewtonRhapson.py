@@ -18,12 +18,13 @@ Dfunction: callable, optional
 max_iterations: int
     Maximum number of iterations until the loop breaks. Default set to 10000
 giveIterations: boolean, optional
-    Information whether the value for iterations needed should be returned or not.
+    Information whether the value for iterations needed and the error should be returned or not. Lists starts at iteration two
+    since the error is always calculated with respect to the previous guess.
 
 Returns
 -------
 tuple
-    (root value, error, number of iterations)
+    (root value, error, convergence)
 
 Notes
 -----
@@ -38,6 +39,7 @@ References
  [1] https://www.math.ubc.ca/~pwalls/math-python/roots-optimization/newton/
 """
     err_accepted = 10e-15
+    convergence = list()
     if Dfunction == None:
         raise Exception(
             "This method currently doesn't support the approximation of derivatives. Please give the derivative function as an input.")
@@ -48,7 +50,8 @@ References
             if not giveIterations:
                 return x_n, 0
             if giveIterations:
-                return x_n, 0, n
+                convergence.append((n, 0))
+                return x_n, 0, convergence
 
         Dy_n = Dfunction(x_n)
         if Dy_n == 0:
@@ -56,11 +59,12 @@ References
 
         if n != 1:
             err = abs(y_old - y_n)
+            convergence.append((n, err))
             if err < err_accepted:
                 if not giveIterations:
                     return x_n - y_n/Dy_n, err
                 if giveIterations:
-                    return x_n - y_n/Dy_n, err, n
+                    return x_n - y_n/Dy_n, err, convergence
         y_old = y_n
         x_n = x_n - y_n/Dy_n
 

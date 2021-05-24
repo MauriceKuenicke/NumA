@@ -83,7 +83,7 @@ def test_bisection_returnIterations():
     assert (
         math.fabs(root - analytical_solution) < tol
         and error < tol
-        and isinstance(iterations, int)
+        and isinstance(iterations, list)
     ), "Rootfinder.bisection does not agree with known solution or the number of iterations is not given back correctly"
 
 
@@ -142,7 +142,7 @@ def test_NewtonRhapson_returnIterations():
     assert (
         math.fabs(root - analytical_solution) < tol
         and error < tol
-        and isinstance(iterations, int)), "Rootfinder.NewtonRhapson does not agree with known solution or the number of iterations is not given back correctly"
+        and isinstance(iterations, list)), "Rootfinder.NewtonRhapson does not agree with known solution or the number of iterations is not given back correctly"
 
 
 def test_NewtonRhapson_MethodStuckError():
@@ -197,7 +197,7 @@ def test_regulaFalsi_returnIterations():
         f1, 0, 3, giveIterations=True)
     solution = 2.09071740515548459
 
-    assert (math.fabs(root - solution) < tol and error < tol and isinstance(iterations, int)
+    assert (math.fabs(root - solution) < tol and error < tol and isinstance(iterations, list)
             ), "Rootfinder.regulaFalsi does not agree with known solution or the number of iterations is not given back correctly"
 
 
@@ -237,5 +237,5 @@ def test_secant_returnIterations():
         f1, 0, 3, giveIterations=True)
     solution = 2.09071740515548459
 
-    assert (math.fabs(root - solution) < tol and error < tol and isinstance(iterations, int)
+    assert (math.fabs(root - solution) < tol and error < tol and isinstance(iterations, list)
             ), "Rootfinder.secant does not agree with known solution or the number of iterations is not given back correctly"

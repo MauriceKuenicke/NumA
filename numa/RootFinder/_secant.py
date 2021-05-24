@@ -15,12 +15,13 @@ interval_end: int
 max_iterations: int
     Maximum number of iterations until the loop breaks. Default set to 10000
 giveIterations: boolean, optional
-    Information whether the value for iterations needed should be returned or not.
+    Information whether the value for iterations needed and the error should be returned or not. Lists starts at iteration two
+    since the error is always calculated with respect to the previous guess.
 
 Returns
 -------
 tuple
-    (root value, error, number of iterations)
+    (root value, error, convergence)
 
 Notes
 -----
@@ -32,6 +33,7 @@ Calculates the next upper limit for the interval as
 
 """
     err_accepted = 10e-15
+    convergence = list()
     a_n = interval_start
     b_n = interval_end
     for n in range(1, max_iterations+1):
@@ -42,18 +44,20 @@ Calculates the next upper limit for the interval as
             if not giveIterations:
                 return x_k, 0
             if giveIterations:
-                return x_k, 0, n
+                convergence.append((n, 0))
+                return x_k, 0, convergence
 
         a_n = b_n
         b_n = x_k                           # set new intervals
 
         if n != 1:
             err = abs(y_old - y_n)
+            convergence.append((n, err))
             if err < err_accepted:
                 if not giveIterations:
                     return _calcX_k(function, a_n, b_n), err
                 if giveIterations:
-                    return _calcX_k(function, a_n, b_n), err, n
+                    return _calcX_k(function, a_n, b_n), err, convergence
         y_old = y_n
 
     raise utils.MaximumIterationError(n)
