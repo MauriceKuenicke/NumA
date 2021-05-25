@@ -48,30 +48,28 @@ References
         if function(a_n)*y_n < 0:    # root is on left side of m_n
             a_n = a_n
             b_n = m_n         # set new interval end
-            if n != 1:
-                err = abs(y_old - y_n)
-                convergence.append((n, err))
-                if err < err_accepted:
-                    if not giveIterations:
-                        return (a_n + b_n)/2, err
-                    if giveIterations:
-                        return (a_n + b_n)/2, err, convergence
-            y_old = y_n
+
+            err = abs(function(m_n) - 0)
+            convergence.append((n, err))
+            if err < err_accepted:
+                if not giveIterations:
+                    return (a_n + b_n)/2, err
+                if giveIterations:
+                    return (a_n + b_n)/2, err, convergence
 
         elif function(b_n)*y_n < 0:  # root is on right side of m_n
-            a_n = m_n         # set new interval start
+            a_n = m_n                # set new interval start
             b_n = b_n
-            if n != 1:
-                err = abs(y_old - y_n)
-                convergence.append((n, err))
-                if err < err_accepted:
-                    if not giveIterations:
-                        return (a_n + b_n)/2, err
-                    if giveIterations:
-                        return (a_n + b_n)/2, err, convergence
-            y_old = y_n
 
-        elif y_n == 0:        # Exact solution
+            err = abs(function(m_n) - 0)
+            convergence.append((n, err))
+            if err < err_accepted:
+                if not giveIterations:
+                    return (a_n + b_n)/2, err
+                if giveIterations:
+                    return (a_n + b_n)/2, err, convergence
+
+        elif y_n == 0:                     # Exact solution
             if not giveIterations:
                 return m_n, 0
             if giveIterations:

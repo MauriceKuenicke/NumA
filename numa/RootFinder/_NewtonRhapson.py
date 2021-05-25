@@ -60,15 +60,13 @@ References
         if Dy_n == 0:
             raise utils.MethodStuckError("Derivative is zero.")
 
-        if n != 1:
-            err = abs(y_old - y_n)
-            convergence.append((n, err))
-            if err < err_accepted:
-                if not giveIterations:
-                    return x_n - y_n/Dy_n, err
-                if giveIterations:
-                    return x_n - y_n/Dy_n, err, convergence
-        y_old = y_n
+        err = abs(function(x_n) - 0)
+        convergence.append((n, err))
+        if err < err_accepted:
+            if not giveIterations:
+                return x_n - y_n/Dy_n, err
+            if giveIterations:
+                return x_n - y_n/Dy_n, err, convergence
         x_n = x_n - y_n/Dy_n
 
     raise utils.MaximumIterationError(n)

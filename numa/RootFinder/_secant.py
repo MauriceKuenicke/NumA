@@ -50,15 +50,13 @@ Calculates the next upper limit for the interval as
         a_n = b_n
         b_n = x_k                           # set new intervals
 
-        if n != 1:
-            err = abs(y_old - y_n)
-            convergence.append((n, err))
-            if err < err_accepted:
-                if not giveIterations:
-                    return _calcX_k(function, a_n, b_n), err
-                if giveIterations:
-                    return _calcX_k(function, a_n, b_n), err, convergence
-        y_old = y_n
+        err = abs(function(x_k) - 0)
+        convergence.append((n, err))
+        if err < err_accepted:
+            if not giveIterations:
+                return _calcX_k(function, a_n, b_n), err
+            if giveIterations:
+                return _calcX_k(function, a_n, b_n), err, convergence
 
     raise utils.MaximumIterationError(n)
 

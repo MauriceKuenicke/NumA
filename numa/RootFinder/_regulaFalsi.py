@@ -47,28 +47,24 @@ def regulaFalsi(function, interval_start, interval_end, max_iterations=10000, gi
         if function(a_n) * y_n < 0:  # root is on left side of x_k
             b_n = x_k  # set new interval end
 
-            if n != 1:
-                err = abs(y_old - y_n)
-                convergence.append((n, err))
-                if err < err_accepted:
-                    if not giveIterations:
-                        return _calcX_k(function, a_n, b_n), err
-                    if giveIterations:
-                        return _calcX_k(function, a_n, b_n), err, convergence
-            y_old = y_n
+            err = abs(function(x_k) - 0)
+            convergence.append((n, err))
+            if err < err_accepted:
+                if not giveIterations:
+                    return _calcX_k(function, a_n, b_n), err
+                if giveIterations:
+                    return _calcX_k(function, a_n, b_n), err, convergence
 
         elif function(b_n) * y_n < 0:  # root is on right side of x_k
             a_n = x_k  # set new interval start
 
-            if n != 1:
-                err = abs(y_old - y_n)
-                convergence.append((n, err))
-                if err < err_accepted:
-                    if not giveIterations:
-                        return _calcX_k(function, a_n, b_n), err
-                    if giveIterations:
-                        return _calcX_k(function, a_n, b_n), err, convergence
-            y_old = y_n
+            err = abs(function(x_k) - 0)
+            convergence.append((n, err))
+            if err < err_accepted:
+                if not giveIterations:
+                    return _calcX_k(function, a_n, b_n), err
+                if giveIterations:
+                    return _calcX_k(function, a_n, b_n), err, convergence
 
         elif y_n == 0:  # Exact solution
             if not giveIterations:

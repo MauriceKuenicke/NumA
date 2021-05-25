@@ -37,7 +37,7 @@ def test_bisection():
     import math
     from numa import RootFinder
 
-    tol = 1e-14
+    tol = 10e-14
 
     def f1(x): return x ** 2 - 5 * x + 3
 
