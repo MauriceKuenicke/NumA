@@ -1,7 +1,7 @@
 API reference
 =============
 
-``NumA.RootFinder``
+``Numa.RootFinder``
 -------------------
 
 .. autofunction:: numa.RootFinder.preAnalysis1D
@@ -25,5 +25,5 @@ API reference
 ---------------------------------------------
 
 
-``Numa.integrate``
-------------------
+``Numa.LinearSystem``
+---------------------
