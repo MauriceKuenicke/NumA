@@ -1,5 +1,3 @@
-from ._symmetry import *
-
 
 class MaximumIterationError(Exception):
     """Exception raised when the maximum number of iterations is reached.
@@ -27,14 +25,21 @@ class MethodStuckError(Exception):
         super().__init__(self.message)
 
 
-class SymmetryError(Exception):
-    """Exception raised when a function doesn't meet some symmetry property.
+class DimensionError(Exception):
+    """Exception raised when the dimension numbers don't match.
 
     Attributes:
-        symmetry -- what symmetry is not met
+        reason -- reason given why the method can't proceed
     """
 
-    def __init__(self, symmetry):
-        self.symmetry = symmetry
-        self.message = f"Input function not valid. {self.symmetry}"
+    def __init__(self, reason):
+        self.reason = reason
+        self.message = f"{self.reason}"
         super().__init__(self.message)
+
+
+def _checkDimensions(A, b):
+    if not A.shape[0] == A.shape[1]:
+        raise DimensionError("Input matrix A is not quadratic!")
+    if not b.shape[0] == A.shape[1]:
+        raise DimensionError("Dimensions of A and b do not match!")

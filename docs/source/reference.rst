@@ -1,6 +1,26 @@
 API reference
 =============
 
+``Numa.LinearSystem``
+---------------------
+
+.. autofunction:: numa.LinearSystem.solveGauss
+
+----------------------------------------------- 
+
+.. autofunction:: numa.LinearSystem.solveLU
+
+----------------------------------------------- 
+
+.. autofunction:: numa.LinearSystem.LU
+
+----------------------------------------------- 
+
+.. autofunction:: numa.LinearSystem.condition
+
+----------------------------------------------- 
+
+
 ``Numa.RootFinder``
 -------------------
 
@@ -25,5 +45,5 @@ API reference
 ---------------------------------------------
 
 
-``Numa.LinearSystem``
+``Numa.Integrate``
 ---------------------
