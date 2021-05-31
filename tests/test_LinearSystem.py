@@ -48,6 +48,18 @@ def test_Gauss_wrongDimensions():
     return None
 
 
+def test_Gauss_singularMatrix():
+    import numpy as np
+    from numa import LinearSystem, utils
+    import pytest
+
+    A = np.array([[0, 2, 1], [1, 1, 1], [4, 0, 2]], dtype=float)
+    b = np.array([1, 1, 1], dtype=float)
+
+    with pytest.raises(utils.SingularityError):
+        x = LinearSystem.solveGauss(A, b)
+
+
 def test_LU():
     import numpy as np
     from numa import LinearSystem
@@ -73,3 +85,15 @@ def test_solveLU():
     x_calculated = LinearSystem.solveLU(A, b)
     assert np.allclose(
         x_calculated, true_solution, atol=tol), "LinearSystem.solveLU does not agree with known solution"
+
+
+def test_LU_singularMatrix():
+    import numpy as np
+    from numa import LinearSystem, utils
+    import pytest
+
+    A = np.array([[0, 2, 1], [1, 1, 1], [4, 0, 2]], dtype=float)
+    b = np.array([1, 1, 1], dtype=float)
+
+    with pytest.raises(utils.SingularityError):
+        x = LinearSystem.solveLU(A, b)

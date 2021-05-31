@@ -21,6 +21,8 @@ x: numpy.array
 
 """
     utils._checkDimensions(A, b)
+    if utils.isSingular(A):
+        raise utils.SingularityError("Input matrix is singular.")
     L, U = LU(A)
     x_calculated = _solveX(L, U, b)
 

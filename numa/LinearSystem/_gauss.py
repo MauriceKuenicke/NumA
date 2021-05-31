@@ -53,6 +53,8 @@ is calculated instead. This can be rewritten
 
 """
     utils._checkDimensions(A, b)
+    if utils.isSingular(A):
+        raise utils.SingularityError("Input matrix is singular.")
     x_calculated = _gauss(A, b)
 
     acc = 10e-14
